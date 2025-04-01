@@ -53,7 +53,7 @@ TOKEN_GALAXIE = "GALAXIE"
 
 @app.route('/webhook', methods=['GET','POST'])
 def webhook():
-    if request.method == ' GET':
+    if request.method == 'GET':
         challenge = verificar_token(request)
         return challenge
     elif request.method == 'POST':
