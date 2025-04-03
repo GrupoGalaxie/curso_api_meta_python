@@ -116,6 +116,29 @@ def enviar_mensajes_whatsapp(texto,number):
                 "body": "Hola Bienvenido, ¿Cómo estás?."
             }
         }
+    elif "1" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "text",
+            "text": {
+                "preview_url": False,
+                "body": "No creo que esta sea la mejor opcion, es guapo pero no tanto."
+            }
+        }
+
+    elif "2" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "text",
+            "text": {
+                "preview_url": False,
+                "body": "Esta es la mejor opcion ya que cuenta con una belleza superior a los demás."
+            }
+        }
 
     else:
         data={
