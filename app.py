@@ -73,10 +73,10 @@ def verificar_token(req):
 
 
 def recibir_mensajes(req):
-    req = request.get_json()
-    agregar_mensajes_log(req)
-
-    return jsonify({'message':'EVENT_RECEIVED'})
+    req_data = request.get_json()
+    texto = json.dumps(req_data, ensure_ascii=False)  # convierte el dict a string
+    agregar_mensajes_log(texto)
+    return jsonify({'message': 'EVENT_RECEIVED'})
 
 
 
