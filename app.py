@@ -76,7 +76,7 @@ def recibir_mensajes(req):
     try:
         req = request.get_json()
         entry = req['entry'][0]
-        changes = entry ['changes'][0]
+        changes = entry['changes'][0]
         value = changes['value']
         objeto_mensaje = value['messages']
 
