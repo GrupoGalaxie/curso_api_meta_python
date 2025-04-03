@@ -140,6 +140,20 @@ def enviar_mensajes_whatsapp(texto,number):
             }
         }
 
+    elif "3" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "location",
+            "location": {
+                "latitude": "8.984512369641095",
+                "longitude": "-79.51576118170499",
+                "name": "Edificio de Credicorp Bank",
+                "address": "Calle 50"
+            }
+        }
+
     else:
         data={
             "messaging_product": "whatsapp",
@@ -148,7 +162,7 @@ def enviar_mensajes_whatsapp(texto,number):
             "type": "text",
             "text": {
                 "preview_url": False,
-                "body": "1. Cotizar con Carlos Cabarca \n 2. Cotizar con Marlos Alabarca"
+                "body": "1. Cotizar con Carlos Cabarca \n 2. Cotizar con Marlos Alabarca \n 3. Cual es su ubicación?"
             }
         }
 
