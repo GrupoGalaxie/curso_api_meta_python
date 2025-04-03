@@ -113,7 +113,7 @@ def enviar_mensajes_whatsapp(texto,number):
             "type": "text",
             "text": {
                 "preview_url": False,
-                "body": " Hola Bienvenido, ¿Cómo estás?."
+                "body": "Hola Bienvenido, ¿Cómo estás?."
             }
         }
 
@@ -133,9 +133,9 @@ def enviar_mensajes_whatsapp(texto,number):
     data=json.dumps(data)  
 
 
-    headers ={
+    headers = {
         "Content-Type" : "application/json",
-        "Authorization": "Bearer EAAOlC6tsiBcBO6IbzblhwbxX7B1MVvwfJGPyZBxuVsBkktMiw6ZCs2Ga5zjAZAasUvZAqISaEPdu3gxBDK8ZCAZC4mnJPjmxRZCyVCnjsJd2IZADblojDzPrxEnEu16wpZCB5MBWy85QmMMlVmHaVxAUTDsOZBSJV11gfgL2JhpQYTEgWB9X13VoY1yZBQdZAiZC1FJEZCw8I4eXcguxvc7VdMg7MZCWP8AA6SbDykZBNCw2aaZA2sb6ZC"
+        "Authorization": "Bearer EAAOlC6tsiBcBOZCZCLn5ZB6nl1fZCuvtO1j3V57EKqc4JhkXN8wZCJREitKawrDsBypzBzE45WcoCyrx4sRuQaOEAeS5CP6etK4A4GlMKZAaCl7xywJZBqgXP1MOZA8wgQfm5NLJZC1S7ij7yWqXEfoMhbAs9eCZC00wcrVM3OWeOt2YZBQn5YsXbipogIQ7WxJbZBQpBJZCO268faoVXsbsBgeIrZAxOk20VdkXS6UJRm2j4qWT8ZD"
     }
 
     connection = http.client.HTTPSConnection("graph.facebook.com")
@@ -143,12 +143,9 @@ def enviar_mensajes_whatsapp(texto,number):
     try:
         connection.request("POST","/v22.0/527257943810787/messages", data, headers)
         response = connection.getresponse()
-        print(response.status, response.reason)
-        
+        print(response.status, response.reason) 
     except Exception as e:
         agregar_mensajes_log(json.dumps(e))
-
-
     finally:
         connection.close()
 
