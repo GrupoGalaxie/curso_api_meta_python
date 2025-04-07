@@ -270,6 +270,54 @@ def enviar_mensajes_whatsapp(texto,number):
                 "body": "Estaré a la espera."
             }
         }
+    elif "lista" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "interactive",
+            "interactive": {
+                "type": "list",
+                "body": {
+                    "text": "Selecciona Alguna Opción"
+                },"footer":{
+                    "text": "Selecciona una de las opciones para poder ayudarte"
+                },"action":{
+                    "button": "Ver Opciones",
+                    "secctions":[
+                        {
+                            "title": "Compra y Venta",
+                            "rows": [
+                                {
+                                    "id":"btncompra",
+                                    "title" : "Compra",
+                                    "decription": "Compra los mejores articulos"
+                                }, {
+                                    "id":"btnvender",
+                                    "title" : "Vender",
+                                    "decription": "Vende lo que ya no estes usando"
+                                }, 
+                            ]
+                        }, {
+                            "title": "Distribución y Entrega",
+                            "rows":[
+                                {
+                                    "id":"btndireccion",
+                                    "title" : "Local",
+                                    "decription": "Puedes visitar nuestro local."
+                                }, {
+                                    "id":"btnentrega",
+                                    "title" : "Entrega",
+                                    "decription": "Las entregas se realizan todos los dias."
+                                }
+                            ]
+                        },
+                    ]
+                },
+            }
+        }
+
+    
     else:
         data={
             "messaging_product": "whatsapp",
