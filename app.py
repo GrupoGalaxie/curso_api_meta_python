@@ -154,6 +154,39 @@ def enviar_mensajes_whatsapp(texto,number):
             }
         }
 
+    elif "4" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "to": number,
+            "text": {
+                "preview_url": True,
+                "body": "Introducción a Kroos! https://youtu.be/9vOA5U7TDdo?si=G9M2vRLQAJ1GG20i"
+            }
+        }
+
+    elif "5" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "text",
+            "text": {
+                "preview_url": False,
+                "body": "En un momento unos de nuestros agentes se pondrá en contacto con usted."
+            }
+        }
+    elif "6" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "text",
+            "text": {
+                "preview_url": False,
+                "body": "Horario de Atención : Lunes a Viernes. \n Horario : 9:00 am a 5:00 Pm \n Sabados \n Horario : 9:00 am a 12:00 pm"
+            }
+        }
+
     else:
         data={
             "messaging_product": "whatsapp",
@@ -162,7 +195,7 @@ def enviar_mensajes_whatsapp(texto,number):
             "type": "text",
             "text": {
                 "preview_url": False,
-                "body": "1. Cotizar con Carlos Cabarca \n 2. Cotizar con Marlos Alabarca \n 3. Cual es su ubicación?"
+                "body": "1. Cotizar con Carlos Cabarca \n 2. Cotizar con Marlos Alabarca \n 3. Cual es su ubicación? \n 4. Información General de la marca Kroos? \n 5. Hablar con un agente \n 6. Horario de atención"
             }
         }
 
