@@ -96,7 +96,7 @@ def recibir_mensajes(req):
                         text = messages["interactive"["button_reply"]]["id"]
                         numero = messages["from"]
                         
-                        enviar_mensajes_whatsapp(text, numero)
+                        enviar_mensajes_whatsapp(text,numero)
                 if "text" in messages:
                     text = messages["text"]["body"]
                     numero = messages["from"]
