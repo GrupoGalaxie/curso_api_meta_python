@@ -93,7 +93,7 @@ def recibir_mensajes(req):
                     tipo_interactivo = messages["interactive"]["type"]
 
                     if tipo_interactivo == "button_reply":
-                        text = messages["interactive"["button_reply"]]["id"]
+                        text = messages["interactive"]["button_reply"]["id"]
                         numero = messages["from"]
                         
                         enviar_mensajes_whatsapp(text,numero)
