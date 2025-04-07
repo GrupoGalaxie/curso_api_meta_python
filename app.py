@@ -115,7 +115,7 @@ def recibir_mensajes(req):
 def enviar_mensajes_whatsapp(texto,number):
     texto = texto.lower()
 
-    if "hola" or "Hola" in texto:
+    if "hola" in texto:
         data={
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
