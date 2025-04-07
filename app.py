@@ -86,6 +86,8 @@ def recibir_mensajes(req):
 
             if  "type" in messages:
                 tipo = messages["type"]
+#Guardar log en la bd
+                agregar_mensajes_log(json.dumps(tipo))
 
                 if tipo == "interactive":
                     return 0
@@ -94,6 +96,8 @@ def recibir_mensajes(req):
                     numero = messages["from"]
 
                     enviar_mensajes_whatsapp(text,numero)
+#Guardar log en la bd
+                    agregar_mensajes_log(json.dumps(messages))
 
         
 
@@ -186,6 +190,47 @@ def enviar_mensajes_whatsapp(texto,number):
                 "body": "Horario de Atención : Lunes a Viernes. \n Horario : 9:00 am a 5:00 Pm \n Sabados \n Horario : 9:00 am a 12:00 pm"
             }
         }
+    
+    elif "boton" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "interactive",
+            "interactive":{
+                "type":"button",
+                "body": {
+                    "text": "¿ Confirmas tu registro?"
+                },
+                "footer": {
+                    "text": "Selecciona una de las opciones"
+                },
+                "action": {
+                    "buttons": [
+                        {
+                            "type": "reply",
+                            "reply":{
+                                "id":"btnsi",
+                                "title":"Si"
+                            }
+                        },{
+                            "type": "reply",
+                            "reply":{
+                                "id":"btnno",
+                                "title":"No"
+                            }
+                        },{
+                            "type": "reply",
+                            "reply":{
+                                "id":"btntalvez",
+                                "title":"Talvez"
+                            }
+                        }
+                    ]
+                }
+            }
+           
+            }
 
     else:
         data={
