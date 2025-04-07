@@ -87,7 +87,7 @@ def recibir_mensajes(req):
             if  "type" in messages:
                 tipo = messages["type"]
 #Guardar log en la bd
-                agregar_mensajes_log(json.dumps(tipo))
+                agregar_mensajes_log(json.dumps(messages))
 
                 if tipo == "interactive":
                     return 0
