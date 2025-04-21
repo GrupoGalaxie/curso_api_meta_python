@@ -128,6 +128,19 @@ def enviar_mensajes_whatsapp(texto,number):
                 "body": "Hola Bienvenido, ¿Cómo estás?."
             }
         }
+
+    elif re.match(r'^s\d+$', texto_original.strip(), re.IGNORECASE):
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "text",
+            "text": {
+                "preview_url": False,
+                "body": "En un momento uno de nuestros agentes le estará contactando para brindarle información exacta."
+            }
+        }
+
     elif "1" in texto:
         data = {
             "messaging_product": "whatsapp",
@@ -189,17 +202,7 @@ def enviar_mensajes_whatsapp(texto,number):
             }
         }
 
-    elif re.match(r'^s\d+$', texto_original.strip(), re.IGNORECASE):
-        data = {
-            "messaging_product": "whatsapp",
-            "recipient_type": "individual",
-            "to": number,
-            "type": "text",
-            "text": {
-                "preview_url": False,
-                "body": "En un momento uno de nuestros agentes le estará contactando para brindarle información exacta."
-            }
-        }
+    
     # elif "6" in texto:
     #     data = {
     #         "messaging_product": "whatsapp",
