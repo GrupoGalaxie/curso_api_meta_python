@@ -113,9 +113,10 @@ def recibir_mensajes(req):
 
 
 def enviar_mensajes_whatsapp(texto,number):
+    texto_original = texto
     texto = texto.lower()
 
-    if "hola" in texto:
+    if "Hola" in texto:
         data={
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
@@ -129,12 +130,10 @@ def enviar_mensajes_whatsapp(texto,number):
     elif "1" in texto:
         data = {
             "messaging_product": "whatsapp",
-            "recipient_type": "individual",
             "to": number,
-            "type": "text",
             "text": {
-                "preview_url": False,
-                "body": "No creo que esta sea la mejor opcion, es guapo pero no tanto."
+                "preview_url": True,
+                "body": "Claro aqui encontrarás nuestros productos! \n https://www.distribuidoragalaxie.com/kross"
             }
         }
 
@@ -146,11 +145,36 @@ def enviar_mensajes_whatsapp(texto,number):
             "type": "text",
             "text": {
                 "preview_url": False,
-                "body": "Esta es la mejor opcion ya que cuenta con una belleza superior a los demás."
+                "body": "Cuéntanos, ¿En que productos estás interesado/a?"
             }
         }
 
     elif "3" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "text",
+            "text": {
+                "preview_url": False,
+                "body": "En un momento unos de nuestros agentes se pondrá en contacto con usted."
+            }
+        }
+
+    elif "4" in texto:
+        data = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "text",
+            "text": {
+                "preview_url": False,
+                "body": "Por supuesto!, Brindame tu número de pedido."
+            }
+        }
+
+    elif "5" in texto:
+        
         data = {
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
@@ -164,17 +188,7 @@ def enviar_mensajes_whatsapp(texto,number):
             }
         }
 
-    elif "4" in texto:
-        data = {
-            "messaging_product": "whatsapp",
-            "to": number,
-            "text": {
-                "preview_url": True,
-                "body": "Introducción a Kroos! https://youtu.be/9vOA5U7TDdo?si=G9M2vRLQAJ1GG20i"
-            }
-        }
-
-    elif "5" in texto:
+    elif re.match(r'^s\d+$', texto_original.strip(), re.IGNORECASE):
         data = {
             "messaging_product": "whatsapp",
             "recipient_type": "individual",
@@ -182,140 +196,140 @@ def enviar_mensajes_whatsapp(texto,number):
             "type": "text",
             "text": {
                 "preview_url": False,
-                "body": "En un momento unos de nuestros agentes se pondrá en contacto con usted."
+                "body": "En un momento uno de nuestros agentes le estará contactando para brindarle información exacta."
             }
         }
-    elif "6" in texto:
-        data = {
-            "messaging_product": "whatsapp",
-            "recipient_type": "individual",
-            "to": number,
-            "type": "text",
-            "text": {
-                "preview_url": False,
-                "body": "Horario de Atención : Lunes a Viernes. \n Horario : 9:00 am a 5:00 Pm \n Sabados \n Horario : 9:00 am a 12:00 pm"
-            }
-        }
+    # elif "6" in texto:
+    #     data = {
+    #         "messaging_product": "whatsapp",
+    #         "recipient_type": "individual",
+    #         "to": number,
+    #         "type": "text",
+    #         "text": {
+    #             "preview_url": False,
+    #             "body": "Horario de Atención : Lunes a Viernes. \n Horario : 9:00 am a 5:00 Pm \n Sabados \n Horario : 9:00 am a 12:00 pm"
+    #         }
+    #     }
     
-    elif "boton" in texto:
-        data = {
-            "messaging_product": "whatsapp",
-            "recipient_type": "individual",
-            "to": number,
-            "type": "interactive",
-            "interactive":{
-                "type":"button",
-                "body": {
-                    "text": "¿ Confirmas tu registro?"
-                },
-                "footer": {
-                    "text": "Selecciona una de las opciones"
-                },
-                "action": {
-                    "buttons": [
-                        {
-                            "type": "reply",
-                            "reply":{
-                                "id":"btnsi",
-                                "title":"Si"
-                            }
-                        },{
-                            "type": "reply",
-                            "reply":{
-                                "id":"btnno",
-                                "title":"No"
-                            }
-                        },{
-                            "type": "reply",
-                            "reply":{
-                                "id":"btntalvez",
-                                "title":"Talvez"
-                            }
-                        }
-                    ]
-                }
-            }
+    # elif "boton" in texto:
+    #     data = {
+    #         "messaging_product": "whatsapp",
+    #         "recipient_type": "individual",
+    #         "to": number,
+    #         "type": "interactive",
+    #         "interactive":{
+    #             "type":"button",
+    #             "body": {
+    #                 "text": "¿ Confirmas tu registro?"
+    #             },
+    #             "footer": {
+    #                 "text": "Selecciona una de las opciones"
+    #             },
+    #             "action": {
+    #                 "buttons": [
+    #                     {
+    #                         "type": "reply",
+    #                         "reply":{
+    #                             "id":"btnsi",
+    #                             "title":"Si"
+    #                         }
+    #                     },{
+    #                         "type": "reply",
+    #                         "reply":{
+    #                             "id":"btnno",
+    #                             "title":"No"
+    #                         }
+    #                     },{
+    #                         "type": "reply",
+    #                         "reply":{
+    #                             "id":"btntalvez",
+    #                             "title":"Talvez"
+    #                         }
+    #                     }
+    #                 ]
+    #             }
+    #         }
            
-            }
-    elif "btnsi" in texto:
-        data = {
-            "messaging_product": "whatsapp",
-            "recipient_type": "individual",
-            "to": number,
-            "type": "text",
-            "text": {
-                "preview_url": False,
-                "body": "Muchas Gracias por Aceptar."
-            }
-        }
-    elif "btnno" in texto:
-        data = {
-            "messaging_product": "whatsapp",
-            "recipient_type": "individual",
-            "to": number,
-            "type": "text",
-            "text": {
-                "preview_url": False,
-                "body": "Es una lastima."
-            }
-        }
-    elif "btntalvez" in texto:
-        data = {
-            "messaging_product": "whatsapp",
-            "recipient_type": "individual",
-            "to": number,
-            "type": "text",
-            "text": {
-                "preview_url": False,
-                "body": "Estaré a la espera."
-            }
-        }
-    elif "lista" in texto:
-        data = {
-            "messaging_product": "whatsapp",
-            "recipient_type": "individual",
-            "to": number,
-            "type": "interactive",
-            "interactive": {
-                "type": "list",
-                "body": {
-                    "text": "Selecciona Alguna Opción"
-                },"footer":{
-                    "text": "Selecciona una de las opciones para poder ayudarte"
-                },"action":{
-                    "button": "Ver Opciones",
-                    "secctions":[
-                        {
-                            "title": "Compra y Venta",
-                            "rows": [
-                                {
-                                    "id":"btncompra",
-                                    "title" : "Compra",
-                                    "decription": "Compra los mejores articulos"
-                                }, {
-                                    "id":"btnvender",
-                                    "title" : "Vender",
-                                    "decription": "Vende lo que ya no estes usando"
-                                }, 
-                            ]
-                        }, {
-                            "title": "Distribución y Entrega",
-                            "rows":[
-                                {
-                                    "id":"btndireccion",
-                                    "title" : "Local",
-                                    "decription": "Puedes visitar nuestro local."
-                                }, {
-                                    "id":"btnentrega",
-                                    "title" : "Entrega",
-                                    "decription": "Las entregas se realizan todos los dias."
-                                }
-                            ]
-                        },
-                    ]
-                },
-            }
-        }
+    #         }
+    # elif "btnsi" in texto:
+    #     data = {
+    #         "messaging_product": "whatsapp",
+    #         "recipient_type": "individual",
+    #         "to": number,
+    #         "type": "text",
+    #         "text": {
+    #             "preview_url": False,
+    #             "body": "Muchas Gracias por Aceptar."
+    #         }
+    #     }
+    # elif "btnno" in texto:
+    #     data = {
+    #         "messaging_product": "whatsapp",
+    #         "recipient_type": "individual",
+    #         "to": number,
+    #         "type": "text",
+    #         "text": {
+    #             "preview_url": False,
+    #             "body": "Es una lastima."
+    #         }
+    #     }
+    # elif "btntalvez" in texto:
+    #     data = {
+    #         "messaging_product": "whatsapp",
+    #         "recipient_type": "individual",
+    #         "to": number,
+    #         "type": "text",
+    #         "text": {
+    #             "preview_url": False,
+    #             "body": "Estaré a la espera."
+    #         }
+    #     }
+    # elif "lista" in texto:
+    #     data = {
+    #         "messaging_product": "whatsapp",
+    #         "recipient_type": "individual",
+    #         "to": number,
+    #         "type": "interactive",
+    #         "interactive": {
+    #             "type": "list",
+    #             "body": {
+    #                 "text": "Selecciona Alguna Opción"
+    #             },"footer":{
+    #                 "text": "Selecciona una de las opciones para poder ayudarte"
+    #             },"action":{
+    #                 "button": "Ver Opciones",
+    #                 "secctions":[
+    #                     {
+    #                         "title": "Compra y Venta",
+    #                         "rows": [
+    #                             {
+    #                                 "id":"btncompra",
+    #                                 "title" : "Compra",
+    #                                 "decription": "Compra los mejores articulos"
+    #                             }, {
+    #                                 "id":"btnvender",
+    #                                 "title" : "Vender",
+    #                                 "decription": "Vende lo que ya no estes usando"
+    #                             }, 
+    #                         ]
+    #                     }, {
+    #                         "title": "Distribución y Entrega",
+    #                         "rows":[
+    #                             {
+    #                                 "id":"btndireccion",
+    #                                 "title" : "Local",
+    #                                 "decription": "Puedes visitar nuestro local."
+    #                             }, {
+    #                                 "id":"btnentrega",
+    #                                 "title" : "Entrega",
+    #                                 "decription": "Las entregas se realizan todos los dias."
+    #                             }
+    #                         ]
+    #                     },
+    #                 ]
+    #             },
+    #         }
+    #     }
 
     
     else:
@@ -326,7 +340,7 @@ def enviar_mensajes_whatsapp(texto,number):
             "type": "text",
             "text": {
                 "preview_url": False,
-                "body": "1. Cotizar con Carlos Cabarca \n 2. Cotizar con Marlos Alabarca \n 3. Cual es su ubicación? \n 4. Información General de la marca Kroos? \n 5. Hablar con un agente \n 6. Horario de atención"
+                "body": "1. Ver catálogo de productos \n 2. Solicitar cotización \n 3. Hablar con un asesor \n 4. Consultar estado de pedido \n 5. Donde está ubicados?"
             }
         }
 
@@ -336,7 +350,7 @@ def enviar_mensajes_whatsapp(texto,number):
 
     headers = {
         "Content-Type" : "application/json",
-        "Authorization": "Bearer EAAOlC6tsiBcBO53ZAyFsEg2BgUggXK7GV9YdasxiZBcuIWo2ZCpjC4NZCgP8xECbxt7ZASnS8RrFpOxnDIFPVDIU93TYQt40EZCBL67ukRUd3TMZArOcpVe0ZCDQSdxVKayqZCFRkIFZCo4cLZBzLmItGAVtb6OM5a3FHsZBYspKXZCG4efXk84gfcqUQS6c2sskrlZCPsJfTZBOYLV1T9gHrf0TSYHOwg1rY2keQdIAK6d5WGZCrfoa"
+        "Authorization": "Bearer EAAOlC6tsiBcBO6dm845lnGuy5XOneCXGbIZBphIoIxBdi396NJLO4IR3dXF7vNsitbZBsf72f7ww5XRCLzjWUwntJRySn4BflG86zLdctbfkVxc728ZBNSzYeKYPiEYq5a39v2yGv3R38CGPx7cfa81UkB0wyxLvYQQosBOPLzyMqQZArxFkkjUOeuZBBlQbjzqwNp0YLeKGcJoLZCODZCdXxPrkW16oZBHOe1aeeXIAq3gZD"
     }
 
     connection = http.client.HTTPSConnection("graph.facebook.com")
