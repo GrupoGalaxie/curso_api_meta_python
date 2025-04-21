@@ -4,6 +4,7 @@ from datetime import datetime
 import http.client
 import json
 app = Flask(__name__)
+import re
 
 #Configuracion de la base de datos sql lite
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///metapython.db'
