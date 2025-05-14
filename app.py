@@ -51,7 +51,7 @@ def agregar_mensajes_log(texto):
 
 
 #Token de verificacion para la configuracion
-TOKEN_GALAXIE = "GALAXIE"
+TOKEN_GALAXIE = "LasG2ji3"
 
 @app.route('/webhook', methods=['GET','POST'])
 def webhook():
@@ -354,7 +354,7 @@ def enviar_mensajes_whatsapp(texto,number):
 
     headers = {
         "Content-Type" : "application/json",
-        "Authorization": "Bearer EAAOlC6tsiBcBOxRZCi3cHZCg8w6FzQDZCPps4exl7VpvnYI3EPsUOUTJcUd74lNJfmgMv7MGgLRRrOHK6LxhPNPZAFVG3KjXrz1n2aJHKmtdT76jZBWneupZCPMxNaC3cJjim9Kkvw6dIfBtAvFIiXioqWPZAAng4SHPUzBm3EQrweoHGynp4xkWnezotsAJZB6675QpZCByXpujTf7q38q6lhyxcRCVz0Jbes9CLPKNQ16YZD"
+        "Authorization": "Bearer EAAP7SbFV5BkBOZBZBPOxeFlwElSJoyxZAI5rJ43ZAprNW7uD4eZC43hmGX1ZCbSKyIdUOZBtODU88ZA3kJIEaAYaZCZCL78QcvDZAyTOjaGJsZAgKrPLgAyYxmRzvScqRtpRfPqPKw2J3tpwPTUXEcZCcpDhMn9EBu1ttfVUi1NE139wGZCcLMvjZCtK88u6sxAMOLUiV3n1AZDZD"
     }
     connection = http.client.HTTPSConnection("graph.facebook.com")
 
